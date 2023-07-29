@@ -1,21 +1,26 @@
 const express = require('express');
-const path = require('path');
 const dotenv = require("dotenv");
-
+const configViewEngine = require('./config/viewEngine');
+const webRoutes = require('./routes/web');
+const connectDB = require('./config/connectDB');
 dotenv.config();
+
 
 const app = express();
 const port = process.env.PORT || 8000;
+configViewEngine(app);
 
 
-//config template engine
-app.set('views', path.join(__dirname, 'views'))
-app.set('view engine', 'ejs')
+connectDB.query(
+    'SELECT * FROM Persons ',
+    function (err, results, fields) {
+        console.log(results); // results contains rows returned by server
+        console.log(fields); // fields contains extra meta data about results, if available
+    }
+);
 
 //khai bao route
-app.get('/', (req, res) => {
-    res.render('index.ejs')
-})
+app.use('/', webRoutes);
 
 app.listen(port, () => {
     console.log(`Server app listening on port ${port}`)
