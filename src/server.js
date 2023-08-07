@@ -10,14 +10,9 @@ const app = express();
 const port = process.env.PORT || 8000;
 configViewEngine(app);
 
+app.use(express.json()); 
+app.use(express.urlencoded({ extended: true }));
 
-connectDB.query(
-    'SELECT * FROM Persons ',
-    function (err, results, fields) {
-        console.log(results); // results contains rows returned by server
-        console.log(fields); // fields contains extra meta data about results, if available
-    }
-);
 
 //khai bao route
 app.use('/', webRoutes);
