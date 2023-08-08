@@ -19,11 +19,18 @@ const postCreatePersons = async (req, res) => {
 
 };
 
+const getUpdatePersons = async (req, res) => {
+    const userId = req.params.id;
+    let [results,fields] = await connectDB.query('select * from Persons where PersonID = ? ',[userId]);
+    let person = results && results.length > 0 ? results[0] : {};
+    res.render('edit.ejs',{user: person});
+}
+
 
 const getCreatPage = (req, res) => {
     res.render('create.ejs')
 }
 
 module.exports = {
-    getHomepage, postCreatePersons, getCreatPage
+    getHomepage, postCreatePersons, getCreatPage,getUpdatePersons
 }
