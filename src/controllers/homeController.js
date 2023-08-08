@@ -1,7 +1,9 @@
 const connectDB = require('../config/connectDB');
+const {getAllPerson} = require('../services/CRUDService')
 
-const getHomepage = (req, res) => {
-    res.render('index.ejs')
+const getHomepage = async (req, res) => {
+    let results = await getAllPerson();
+    res.render('index.ejs', {listPersons: results})
 }
 
 
@@ -13,17 +15,7 @@ const postCreatePersons = async (req, res) => {
         `INSERT INTO Persons(Name, Gmail, Address, City, Phone) VALUES (?,?,?,?,?)`,
         [Name, Gmail, Address, City, Phone])
     console.log("Kết quả truy vấn:", results);
-    // connectDB.query(
-    //     `INSERT INTO Persons(Name, Gmail, Address, City, Phone) VALUES (?,?,?,?,?)`,
-    //     [Name, Gmail, Address, City, Phone],A
-    //     function (err, results) {
-    //         if (err) {
-    //             console.error("Lỗi khi thực hiện truy vấn:", err);
-    //             return;
-    //         }
-    //         console.log("Kết quả truy vấn:", results);
-    //     }
-    // );
+    
 
 };
 

@@ -31,31 +31,48 @@
             </div>
         </nav>
     </header>
+
     <body>
         <table class="table table-striped">
             <thead>
-              <tr>
-                <th>PersonID</th>
-                <th>Name</th>
-                <th>Gmail</th>
-                <th>Address</th>
-                <th>City</th>
-                <th>Phone</th>
-              </tr>
+                <tr>
+                    <th>Name</th>
+                    <th>Gmail</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>Phone</th>
+                    <th>Actions</th>
+                </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>John</td>
-                <td>Doe</td>
-                <td>Doe</td>
-                <td>Doe</td>
-                <td>Doe</td>
-                <td>john@example.com</td>
-              </tr>
+                <% listPersons.forEach(function(user,index) {%>
+                    <tr>
+                        <td>
+                            <%= user.Name%>
+                        </td>
+                        <td>
+                            <%= user.Gmail%>
+                        </td>
+                        <td>
+                            <%= user.Address%>
+                        </td>
+                        <td>
+                            <%= user.City%>
+                        </td>
+                        <td>
+                            <%= user.Phone%>
+                        </td>
+                        <td>
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </td>
+                    </tr>
+
+                    <%}); %>
             </tbody>
-          </table>
+        </table>
     </body>
-    
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
