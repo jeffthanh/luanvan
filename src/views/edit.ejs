@@ -10,7 +10,6 @@
     <title>Update A Person</title>
 </head>
 
-<%= JSON.stringify(user) %>
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #FFACB7;">
@@ -31,10 +30,9 @@
             </div>
         </nav>
     </header>
-
     <body>
-        <form action="/create-person" method="post">
-            <div class="form-group">
+        <form action="/update-person" method="post">
+            <div class="form-group d-none">
                 <label for="exampleInputPassword1">PersonID</label>
                 <input type="text" class="form-control" name="PersonID" value="<%= user.PersonID %>">
             </div>

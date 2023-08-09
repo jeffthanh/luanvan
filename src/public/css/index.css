@@ -30,3 +30,6 @@ nav {
         padding: 0 0.8em;
     }
 }
+.d-none{
+    display: none;
+}
