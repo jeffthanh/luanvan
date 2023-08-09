@@ -33,3 +33,7 @@ nav {
 .d-none{
     display: none;
 }
+
+a{
+    text-decoration: none;
+}

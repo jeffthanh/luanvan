@@ -16,4 +16,11 @@ const postUpdatePersonsID= async (Name, Gmail, Address, City, Phone ,PersonID) =
         [Name, Gmail, Address, City, Phone ,PersonID]);
     return results;
 }
-module.exports = {getAllPerson, getUpdatePersonsID  , postUpdatePersonsID}
+
+const postDeletePersonsID = async(PersonID)=>{
+    let [results, fields] = await connectDB.query(
+        `DELETE FROM Persons WHERE PersonID=? `,
+        [PersonID]);
+    return results;
+}
+module.exports = {getAllPerson, getUpdatePersonsID  , postUpdatePersonsID,postDeletePersonsID}

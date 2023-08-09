@@ -1,5 +1,5 @@
 const connectDB = require('../config/connectDB');
-const {getAllPerson,getUpdatePersonsID,postUpdatePersonsID} = require('../services/CRUDService')
+const {getAllPerson,getUpdatePersonsID,postUpdatePersonsID,postDeletePersonsID} = require('../services/CRUDService')
 
 const getHomepage = async (req, res) => {
     let results = await getAllPerson();
@@ -21,7 +21,6 @@ const postCreatePersons = async (req, res) => {
 
 const getUpdatePersons = async (req, res) => {
     const userId = req.params.id;
-   
     let person = await getUpdatePersonsID(userId);
     res.render('edit.ejs',{user: person});
 }
@@ -40,6 +39,18 @@ const postUpdatePersons =  async (req, res) => {
     
 }
 
+const getDeletePersons = async (req, res) =>{
+    const userId = req.params.id;
+    let person = await getUpdatePersonsID(userId);
+    res.render('delete.ejs',{user: person})
+}
+
+const postDeletePersons = async (req, res) =>{
+    const Id = req.body.PersonID;
+    await postDeletePersonsID(Id);
+    res.redirect('/',);
+    
+}
 module.exports = {
-    getHomepage, postCreatePersons, getCreatPage,getUpdatePersons,postUpdatePersons
+    postDeletePersons,getDeletePersons, getHomepage, postCreatePersons, getCreatPage,getUpdatePersons,postUpdatePersons
 }

@@ -7,9 +7,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/index.css">
-    <title>Trang chủ</title>
+    <title>Delete A Person</title>
 </head>
-
 
 <body>
     <header>
@@ -22,7 +21,7 @@
             <div class="collapse navbar-collapse" id="navbarToggler8">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" href="/">Home</a>
+                        <a class="nav-link" href="/">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/create">Create Person</a>
@@ -31,52 +30,20 @@
             </div>
         </nav>
     </header>
-
     <body>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>PersonID</th>
-                    <th>Name</th>
-                    <th>Gmail</th>
-                    <th>Address</th>
-                    <th>City</th>
-                    <th>Phone</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% listPersons.forEach(function(user,index) {%>
-                    <tr>
-                        <td>
-                            <%= user.PersonID%>
-                        </td>
-                        <td>
-                            <%= user.Name%>
-                        </td>
-                        <td>
-                            <%= user.Gmail%>
-                        </td>
-                        <td>
-                            <%= user.Address%>
-                        </td>
-                        <td>
-                            <%= user.City%>
-                        </td>
-                        <td>
-                            <%= user.Phone%>
-                        </td>
-                        <td>
-                            <a href="/edit/<%= user.PersonID%>">Edit</a>
-                            <a href="/delete/<%= user.PersonID%>">Delete</a>
-                        </td>
-                    </tr>
-
-                    <%}); %>
-            </tbody>
-        </table>
+        <form action="/delete" method="post">
+            <div class="form-group d-none">
+                <label for="exampleInputPassword1">PersonID</label>
+                <input type="text" class="form-control" name="PersonID" value="<%= user.PersonID %>">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Are you sure to delete this person</label>
+                <input type="text" name="Name" value="<%= user.Name %>">
+            </div>
+           
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
     </body>
-
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
